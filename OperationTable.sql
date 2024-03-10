@@ -42,3 +42,7 @@ DESC employee
 
 -- 查询
 SELECT * FROM `employee`;
+
+-- 设置别名
+
+SELECT `user_name` AS '用户名' FROM `employee` ;
