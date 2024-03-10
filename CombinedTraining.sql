@@ -1,0 +1,76 @@
+-- 部门表
+CREATE TABLE dept(
+	deptno MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,
+	dname VARCHAR(20) NOT NULL DEFAULT "",
+	loc VARCHAR(13) NOT NULL DEFAULT ""
+);
+
+INSERT INTO dept VALUES(10,'ACCOUNTING','NEW YORK'),(20,'RESEARCH','DALLAS'),(30,'SALES','CHICAGO'),(40,'OPERATIONS','BOSTON')
+
+SELECT * FROM dept;
+
+-- 员工表
+CREATE TABLE emp(
+empno MEDIUMINT UNSIGNED NOT NULL DEFAULT 0, /*编号*/
+ename VARCHAR(20) NOT NULL DEFAULT "",/*名字*/
+job VARCHAR(9) NOT NULL DEFAULT "",/*职位*/
+mgr MEDIUMINT UNSIGNED,/*上级编号*/
+hiredate DATE NOT NULL,/*入职时间*/
+sal DECIMAL(7.2),/*薪水*/
+comm DECIMAL(7.2),/*红利*/
+deptno MEDIUMINT UNSIGNED NOT NULL DEFAULT 0 /*部门编号*/
+);
+
+-- 插入信息
+INSERT INTO emp VALUES
+(7369,'SMITH','CLEPR',7902,'1990-12-17',800.00,NULL,20),
+(7499,'ALLEN','SALESMAN',7698,'1991-2-20',1600.00,300.0,30),
+(7521,'WARD','SALESMAN',7698,'1991-2-22',1250.00,500.0,30),
+(7839,'KING','PRESTDENT',NULL,'1991-11-2',5000.00,NULL,10),
+(7566,'JONES','SALESMAN',7698,'1991-9-28',1250.00,1400.00,30),
+(7654,'MARTIN','SALESMAN',7698,'1991-5-21',1250.00,1400.00,30),
+(7902,'FORD','SALESMAN',7698,'1991-5-21',1250.00,1400.00,30),
+(7900,'JAMES','SALESMAN',7698,'1991-5-21',1250.00,1400.00,30),
+(7788,'SCOTT','SALESMAN',7698,'1991-5-21',1250.00,1400.00,30)
+
+SELECT * FROM emp;
+SELECT COUNT(*) FROM emp;
+
+-- 工资级别表
+CREATE TABLE salgrade(
+	grade MEDIUMINT UNSIGNED NOT NULL DEFAULT 0, /*工资级别*/
+	losql DECIMAL(17,2) NOT NULL,/*最低工资*/
+	hisal DECIMAL(17,2) NOT NULL/*最高工资*/
+);
+
+INSERT INTO salgrade VALUES (1,700,1200);
+INSERT INTO salgrade VALUES (2,1201,1400);
+INSERT INTO salgrade VALUES (3,1401,2000);
+INSERT INTO salgrade VALUES (4,2001,3000);
+INSERT INTO salgrade VALUES (5,3001,9999);
+
+SELECT * FROM salgrade;
+
+## 演示GROUP BY + HAVING
+GROUP BY统计结果分析
+
+-- 按照部门分组分析
+SELECT AVG(sal),MAX(sal),deptno
+	FROM emp GROUP BY deptno;
+
+-- 每个部门每种岗位的平均工资和最低工资
+-- 需考虑每个部门的每个岗位平均工资和最低工资
+SELECT AVG(sal),MIN(sal), deptno, job
+	FROM emp GROUP BY deptno, job;
+	
+-- 平均工资低于2000的部门号和它的平均工资 // 别名设置
+-- 第一种写法
+SELECT AVG(sal),deptno 
+	FROM emp GROUP BY deptno 
+	HAVING AVG(sal) < 2000;
+	
+-- 第二种写法(设置别名 少一层函数计算)
+SELECT AVG(sal) AS avg_sal,deptno
+	FROM emp GROUP BY deptno
+	HAVING avg_sal < 2000;
+	
