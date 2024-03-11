@@ -27,11 +27,11 @@ CREATE TABLE Course(
 )
 
 CREATE TABLE SC(
-		Sno VARCHAR(9),
-		Cno VARCHAR(10),
-		Grade TINYINT,
-	    FOREIGN KEY(Sno) REFERENCES Student(Sno),
-	    FOREIGN KEY (Cno) REFERENCES Course(Cno),
+	Sno VARCHAR(9),
+	Cno VARCHAR(10),
+	Grade TINYINT,
+	FOREIGN KEY(Sno) REFERENCES Student(Sno),
+	FOREIGN KEY (Cno) REFERENCES Course(Cno),
 )
 
 CREATE TABLE Teacher(
@@ -49,7 +49,7 @@ SELECT * FROM Teacher
 -- 1.Teacher表添加职称列，列名Title,类型为nchar(4)
 ALTER TABLE Teacher ADD Title nchar(4);
 -- 2.Teacher表中的Title列添加取值范围约束，取值约束范围{教授，副教授，讲师}
-ALTER TABLE Teacher ADD CONSTRAINT Teacher_Tname
+ALTER TABLE Teacher ADD CONSTRAINT CK_TitleRange CHECK (Title IN ('教授', '副教授', '讲师'));
 -- 3.Course表中Credit列数据更改tinyint
 ALTER TABLE Course MODIFY Credit tinyint;
 -- 4.删除Student表中的Sid和Sdate
