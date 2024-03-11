@@ -46,3 +46,14 @@ SELECT * FROM SC
 SELECT * FROM Teacher
 
 -- SQL_USE
+-- 1.Teacher表添加职称列，列名Title,类型为nchar(4)
+ALTER TABLE Teacher ADD Title nchar(4);
+-- 2.Teacher表中的Title列添加取值范围约束，取值约束范围{教授，副教授，讲师}
+ALTER TABLE Teacher ADD CONSTRAINT Teacher_Tname
+-- 3.Course表中Credit列数据更改tinyint
+ALTER TABLE Course MODIFY Credit tinyint;
+-- 4.删除Student表中的Sid和Sdate
+ALTER TABLE Student DROP COLUMN  Sid;
+ALTER TABLE Student DROP COLUMN  Sdate;
+-- 5.Teacher表添加主键约束，主键为Tno
+ALTER TABLE Teacher ADD PRIMARY KEY (Tno);					
