@@ -4,7 +4,6 @@ SELECT COUNT(*) AS '学生个数' FROM student;
 -- 统计数学成绩大于90的学生有多少个？
 SELECT COUNT(*) AS '学生数学成绩大于90的个数' FROM student WHERE math > 90;
 
-
 -- sum
 -- 统计一个班数学总成绩
 SELECT SUM(math) FROM student;
