@@ -84,3 +84,21 @@ ALTER TABLE menu1 ADD UNIQUE INDEX menu1_key (IDcard);
 
 /* 查询索引*/
 SHOW INDEX FROM menu1
+
+-----------------------------------练习3
+/* 创建一张运动员表运动员(id号，名字，特长)要求id号为主键)
+名字为普通索引，需南三种方式来创建索引(提示:为练习方便，可
+以是不同表名运动员1，运动员2，运动员3*/
+
+CREATE TABLE sportman1
+(
+	id INT,
+	name VARCHAR(32),
+	Specialties VARCHAR(25)
+)
+
+ALTER TABLE sportman1 ADD PRIMARY KEY (id);
+
+CREATE INDEX id_index ON sportman1 (id);
+
+SHOW INDEX FROM sportman1
