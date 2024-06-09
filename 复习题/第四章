@@ -1,0 +1,12 @@
+//第四章
+1.SQL语言的特点：一体化 高度非过程化 简单易学 多种方式使用
+2.SQL语言4个功能：数据定义 数据查询 数据更改 数据控制
+3.SQL的主要功能：
+  数据定义：CREATE\DROP\ALTER 
+  数据查询：SELECT 查
+  数据更改：INSERT\UPDATE\DELETE 插改删
+  数据控制：GRANT\REVOKE\DENY
+4.字符串型数据由汉字、英文字母、数字和各种符号组成
+5.定义架构的SQL的语句为CRERATE SCHEMA {
+  <架构名> AUTH ORI ZATION
+}
