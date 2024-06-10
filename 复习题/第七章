@@ -1,0 +1,11 @@
+// 第七章
+1.建立触发器命令CREATE TRIGGER ON AS
+  CREATE TRIGGER 触发器名称
+  ON {表名 | 视图名}
+  {FOR |AFTER | INSTEAD OF}
+  { [INSERT] [ , ] [ DELETE] [ , ] [UPDATE] }
+  AS
+  SQL语句[ ;]
+
+2.FOR 或 AFTER定义的触发器为后触发型的触发器 
+3.INSERT OF为前触发器
